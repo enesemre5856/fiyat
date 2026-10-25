@@ -9,9 +9,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 10px; background-color: #f4f4f9; }
 
-  .header { text-align: center; padding: 15px; background: #0056b3; color: white; border-radius: 10px; margin-bottom: 15px; cursor: pointer; user-select: none; }
+  .header { text-align: center; padding: 15px; background: #0056b3; color: white; border-radius: 10px; margin-bottom: 15px; user-select: none; }
   .header img { max-width: 140px; height: auto; margin-bottom: 8px; border-radius: 5px; background: white; padding: 6px; }
   .header h2 { margin: 0; font-size: 1.2em; }
+  .kur-bilgi { font-size: 0.75em; margin-top: 6px; opacity: 0.85; }
 
   .category-card { display: flex; align-items: center; justify-content: center; background: white; padding: 25px 15px; margin-bottom: 12px; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.12); cursor: pointer; transition: transform 0.15s; }
   .category-card:active { transform: scale(0.98); }
@@ -22,7 +23,7 @@
   .back-btn { background: #0056b3; color: white; border: none; padding: 10px 16px; border-radius: 8px; font-size: 0.95em; cursor: pointer; margin-bottom: 12px; display: inline-block; }
   .back-btn:active { opacity: 0.8; }
 
-  .cat-title { font-size: 1.15em; color: #0056b3; font-weight: 700; margin: 5px 0 12px 0; text-align: center; }
+  .cat-title { font-size: 1.15em; color: #0056b3; font-weight: 700; margin: 5px 0 12px 0; text-align: center; padding: 10px; background: white; border-radius: 8px; cursor: pointer; user-select: none; }
 
   .product-card { display: flex; background: white; padding: 12px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); align-items: flex-start; gap: 12px; }
   .product-img { width: 85px; height: 85px; object-fit: contain; border-radius: 6px; background-color: #f9f9f9; border: 1px solid #eee; cursor: pointer; flex-shrink: 0; padding: 4px; }
@@ -42,11 +43,11 @@
 </head>
 <body>
 
-<!-- ANA EKRAN -->
 <div id="homeView">
-  <div class="header" id="secretTrigger">
+  <div class="header">
     <img src="https://logo.clearbit.com/himstech.com" alt="Hims Logo" onerror="this.src='https://himstech.com/favicon.png'">
     <h2>Hims Fiyat Listesi</h2>
+    <div class="kur-bilgi" id="kurBilgi">Kur yükleniyor...</div>
   </div>
 
   <div class="category-card" onclick="showCategory('ac')">
@@ -63,7 +64,6 @@
   </div>
 </div>
 
-<!-- KATEGORİ EKRANI -->
 <div id="categoryView">
   <button class="back-btn" onclick="showHome()">← Geri Dön</button>
   <div class="cat-title" id="catTitle"></div>
@@ -71,7 +71,6 @@
 </div>
 
 <script>
-// Tüm ürünler kategorilere ayrılmış şekilde
 const categories = {
   ac: {
     title: "AC ŞARJ",
@@ -140,7 +139,6 @@ const categories = {
   aksesuar: {
     title: "AKSESUARLAR",
     products: [
-      // Araç Şarj Kabloları
       { code: "EMEF-22T2-XY-2", desc: "22kW Type 2 Soketli 2m Araç Şarj Kablosu", euroPrice: 140, sitePrice: null, group: "Araç Şarj Kabloları" },
       { code: "EMEF-22T2-XY-3", desc: "22kW Type 2 Soketli 3m Araç Şarj Kablosu", euroPrice: 148, sitePrice: null, group: "Araç Şarj Kabloları" },
       { code: "EMEF-22T2-XY-5", desc: "22kW Type 2 Soketli 5m Araç Şarj Kablosu", euroPrice: 170, sitePrice: null, group: "Araç Şarj Kabloları" },
@@ -152,7 +150,6 @@ const categories = {
       { code: "EMEF-22T2-XY-20", desc: "22kW Type 2 Soketli 20m Araç Şarj Kablosu", euroPrice: 468, sitePrice: null, group: "Araç Şarj Kabloları" },
       { code: "EMEF-11T2-XY-5", desc: "11kW Tip 2 Siyah Soketli 5m Araç Şarj Kablosu", euroPrice: 119, sitePrice: null, group: "Araç Şarj Kabloları" },
 
-      // İstasyon Kabloları
       { code: "EMEF-22T2F-XY-5", desc: "22kW 5m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 145, sitePrice: null, group: "İstasyon Kabloları" },
       { code: "EMEF-22T2F-XY-7", desc: "22kW 7m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 183, sitePrice: null, group: "İstasyon Kabloları" },
       { code: "EMEF-22T2F-XY-8", desc: "22kW 8m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 195, sitePrice: null, group: "İstasyon Kabloları" },
@@ -162,28 +159,25 @@ const categories = {
       { code: "EMEF-7T2F-XY-5", desc: "7.4kW Type 2 5m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 105, sitePrice: null, group: "İstasyon Kabloları" },
       { code: "EMEF-11T2F-XY-5", desc: "11kW Type 2 5m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 90, sitePrice: null, group: "İstasyon Kabloları" },
 
-      // V2L Adaptörler
       { code: "HCV2L-01", desc: "Hyundai-KİA-Sangyong Uyumlu Tek Çıkışlı V2L Adaptörü", euroPrice: 62, sitePrice: null, group: "V2L Adaptörler" },
       { code: "HCV2L-02", desc: "MG Uyumlu Tek Çıkışlı V2L Adaptörü", euroPrice: 62, sitePrice: null, group: "V2L Adaptörler" },
       { code: "HCV2L-03", desc: "BYD-Skywell Uyumlu Tek Çıkışlı V2L Adaptörü", euroPrice: 62, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-31-1", desc: "Hyundai-KİA-Sangyong Uyumlu V2L Tekli Uzatma Priz Adaptör (3m)", euroPrice: 77, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-31-1", desc: "Hyundai-KİA-Sangyong V2L Tekli Uzatma Priz Adaptör (3m)", euroPrice: 77, sitePrice: null, group: "V2L Adaptörler" },
       { code: "HCV2L-32-1", desc: "MG Uyumlu V2L Tekli Uzatma Priz Adaptör (3m)", euroPrice: 77, sitePrice: null, group: "V2L Adaptörler" },
       { code: "HCV2L-33-1", desc: "BYD-Skywell Uyumlu V2L Tekli Uzatma Priz Adaptör (3m)", euroPrice: 77, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-31-2", desc: "Hyundai-KİA-Sangyong Uyumlu V2L 2'li Uzatma Priz Adaptör (3m)", euroPrice: 83, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-31-2", desc: "Hyundai-KİA-Sangyong V2L 2'li Uzatma Priz Adaptör (3m)", euroPrice: 83, sitePrice: null, group: "V2L Adaptörler" },
       { code: "HCV2L-32-2", desc: "MG Uyumlu V2L 2'li Uzatma Priz Adaptör (3m)", euroPrice: 83, sitePrice: null, group: "V2L Adaptörler" },
       { code: "HCV2L-33-2", desc: "BYD-Skywell Uyumlu V2L 2'li Uzatma Priz Adaptör (3m)", euroPrice: 83, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-31-3", desc: "Hyundai-KİA-Sangyong Uyumlu 3'lü Uzatmalı V2L Adaptörü", euroPrice: 85, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-31-3", desc: "Hyundai-KİA-Sangyong 3'lü Uzatmalı V2L Adaptörü", euroPrice: 85, sitePrice: null, group: "V2L Adaptörler" },
       { code: "HCV2L-32-3", desc: "MG Uyumlu 3'lü Uzatmalı V2L Adaptörü (3m)", euroPrice: 85, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-33-3", desc: "BYD-Skywell Uyumlu 3'lü Uzatmalı V2L Adaptörü (3m)", euroPrice: 85, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-33-3", desc: "BYD-Skywell 3'lü Uzatmalı V2L Adaptörü (3m)", euroPrice: 85, sitePrice: null, group: "V2L Adaptörler" },
 
-      // C2L Adaptörler
       { code: "HCC2L-01", desc: "Elektrikli Araçlar ile Uyumlu C2L Adaptör", euroPrice: 82, sitePrice: null, group: "C2L Adaptörler" },
       { code: "HCC2L-13", desc: "C2L Tekli Uzatma Fişli Adaptör (3m)", euroPrice: 97, sitePrice: null, group: "C2L Adaptörler" },
       { code: "HCC2L-23", desc: "C2L 2'li Uzatma Fişli Adaptör (3m)", euroPrice: 107, sitePrice: null, group: "C2L Adaptörler" },
-      { code: "HCC2L-31", desc: "Hyundai-KİA-Sangyong Uyumlu 3'lü Uzatmalı C2L Adaptörü (3m)", euroPrice: 114, sitePrice: null, group: "C2L Adaptörler" },
+      { code: "HCC2L-31", desc: "Hyundai-KİA-Sangyong 3'lü Uzatmalı C2L Adaptörü (3m)", euroPrice: 114, sitePrice: null, group: "C2L Adaptörler" },
       { code: "HCC2L13-532", desc: "C2L 5/32A Prizli Uzatma Fişli Adaptör (3m)", euroPrice: 169, sitePrice: null, group: "C2L Adaptörler" },
 
-      // Dönüştürücüler
       { code: "HCCA-TM32-30", desc: "CEE Norm Adaptör 3x6 TTR 3/32A Fiş - 5/32A Priz (30cm)", euroPrice: 29, sitePrice: null, group: "Dönüştürücüler" },
       { code: "HCCA-TM16-30", desc: "CEE Norm Adaptör 3x2,5 TTR 1/16A Fiş - 5/32A Priz (30cm)", euroPrice: 23, sitePrice: null, group: "Dönüştürücüler" },
       { code: "HCTA-TM32-40", desc: "HCTK-22 Quick Konnektörlü İçin 7.4kW Dönüştürücü", euroPrice: 118, sitePrice: null, group: "Dönüştürücüler" },
@@ -191,12 +185,10 @@ const categories = {
       { code: "EMEP-P-K-32-TS", desc: "Pano Priz 4 Noktadan Montajlı Trifaze 16/32/63A", euroPrice: 70, sitePrice: null, group: "Dönüştürücüler" },
       { code: "EMMA-D01", desc: "Priz Tutucu", euroPrice: 32, sitePrice: null, group: "Dönüştürücüler" },
 
-      // Standlar
       { code: "HCMA", desc: "Elektrikli Araç Şarj İstasyonu Pedestalı", euroPrice: 280, sitePrice: null, group: "Standlar" },
       { code: "HCMA-S", desc: "Şapkalı Elektrikli Araç Şarj İstasyonu Pedestalı", euroPrice: 310, sitePrice: null, group: "Standlar" },
       { code: "HCS01", desc: "Metal Ürün Tanıtım Standı Tekerlekli", euroPrice: 500, sitePrice: null, group: "Standlar" },
 
-      // Çantalar
       { code: "HCB4010", desc: "Kablo Çantası", euroPrice: 39, sitePrice: null, group: "Çantalar" },
       { code: "HCBV2L2010", desc: "V2L Çantası", euroPrice: 17, sitePrice: null, group: "Çantalar" },
       { code: "HCTB45", desc: "Taşınabilir İstasyon Çantası", euroPrice: 45, sitePrice: null, group: "Çantalar" }
@@ -205,82 +197,117 @@ const categories = {
 };
 
 const KDV_ORANI = 1.20;
-let currentEuroRate = 48.0;
+// Fallback: senin verdiğin HTML kaynağındaki EUR_TO_TL değeri
+let currentEuroRate = 55.60;
+let currentEuroRateSource = "sabit (son bilinen)";
 let secretModeActive = false;
-let tapCount = 0;
-let tapTimer;
+let catTapCount = 0;
+let catTapTimer;
 let currentCategory = null;
 
-// TCMB Kur Çekme
+// TCMB Efektif Satış Kuru Çekme (3 farklı proxy dener)
 async function fetchTCMBEuroRate() {
   const tcmbUrl = "https://www.tcmb.gov.tr/kurlar/today.xml";
-  const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(tcmbUrl)}`;
-  try {
-    const response = await fetch(proxyUrl);
-    const data = await response.json();
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(data.contents, "text/xml");
-    const eurNode = xmlDoc.querySelector('Currency[Kod="EUR"]');
-    if (eurNode) {
-      const banknoteSelling = eurNode.querySelector('BanknoteSelling').textContent;
-      if (banknoteSelling && parseFloat(banknoteSelling) > 0) {
-        currentEuroRate = parseFloat(banknoteSelling);
+  const proxies = [
+    { url: `https://api.allorigins.win/raw?url=${encodeURIComponent(tcmbUrl)}`, type: "text" },
+    { url: `https://corsproxy.io/?${encodeURIComponent(tcmbUrl)}`, type: "text" },
+    { url: `https://api.allorigins.win/get?url=${encodeURIComponent(tcmbUrl)}`, type: "json" }
+  ];
+
+  for (const proxy of proxies) {
+    try {
+      const res = await fetch(proxy.url);
+      if (!res.ok) continue;
+      let xmlText;
+      if (proxy.type === "json") {
+        const data = await res.json();
+        xmlText = data.contents;
+      } else {
+        xmlText = await res.text();
       }
+      if (!xmlText || xmlText.length < 100) continue;
+
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+      const eurNode = xmlDoc.querySelector('Currency[Kod="EUR"]');
+      if (eurNode) {
+        const banknoteSelling = eurNode.querySelector("BanknoteSelling")?.textContent;
+        if (banknoteSelling && parseFloat(banknoteSelling) > 0) {
+          currentEuroRate = parseFloat(banknoteSelling);
+          currentEuroRateSource = "TCMB Efektif Satış";
+          console.log("✅ TCMB EUR Efektif Satış:", currentEuroRate);
+          break;
+        }
+      }
+    } catch (e) {
+      console.warn("Proxy başarısız:", proxy.url, e.message);
     }
-  } catch (error) {
-    console.error("TCMB kuru çekilemedi, varsayılan kullanılıyor:", error);
   }
+
+  document.getElementById("kurBilgi").textContent =
+    `1 € = ${currentEuroRate.toFixed(4)} ₺ (${currentEuroRateSource})`;
+
   if (currentCategory) renderProducts(currentCategory);
 }
 
-// Gizli Mod (3 tıklama)
-document.getElementById('secretTrigger').addEventListener('click', () => {
-  tapCount++;
-  clearTimeout(tapTimer);
-  tapTimer = setTimeout(() => { tapCount = 0; }, 500);
-  if (tapCount === 3) {
-    secretModeActive = !secretModeActive;
-    tapCount = 0;
-    document.querySelectorAll('.discount-section').forEach(el => {
-      el.style.display = secretModeActive ? 'block' : 'none';
-    });
-  }
-});
-
 function showCategory(key) {
   currentCategory = key;
-  document.getElementById('homeView').style.display = 'none';
-  document.getElementById('categoryView').style.display = 'block';
-  document.getElementById('catTitle').textContent = categories[key].title;
+  document.getElementById("homeView").style.display = "none";
+  document.getElementById("categoryView").style.display = "block";
+  const catTitleEl = document.getElementById("catTitle");
+  catTitleEl.textContent = categories[key].title;
   renderProducts(key);
+  attachCatTitleTap();
   window.scrollTo(0, 0);
 }
 
 function showHome() {
   currentCategory = null;
-  document.getElementById('categoryView').style.display = 'none';
-  document.getElementById('homeView').style.display = 'block';
+  document.getElementById("categoryView").style.display = "none";
+  document.getElementById("homeView").style.display = "block";
   window.scrollTo(0, 0);
 }
 
+// Kategori başlığına 2 tıklama -> gizli iskonto modu
+function attachCatTitleTap() {
+  const catTitle = document.getElementById("catTitle");
+  // Dinleyiciyi sıfırlamak için klonla
+  const clone = catTitle.cloneNode(true);
+  catTitle.parentNode.replaceChild(clone, catTitle);
+  catTapCount = 0;
+  clone.addEventListener("click", () => {
+    catTapCount++;
+    clearTimeout(catTapTimer);
+    catTapTimer = setTimeout(() => { catTapCount = 0; }, 500);
+    if (catTapCount === 2) {
+      secretModeActive = !secretModeActive;
+      catTapCount = 0;
+      document.querySelectorAll(".discount-section").forEach(el => {
+        el.style.display = secretModeActive ? "block" : "none";
+      });
+      // Görsel geri bildirim
+      clone.style.background = secretModeActive ? "#fff3cd" : "white";
+    }
+  });
+}
+
 function renderProducts(catKey) {
-  const listContainer = document.getElementById('productList');
-  listContainer.innerHTML = '';
+  const listContainer = document.getElementById("productList");
+  listContainer.innerHTML = "";
   const products = categories[catKey].products;
   let lastGroup = null;
 
   products.forEach((product, index) => {
-    // Aksesuarlar için grup başlığı
-    if (catKey === 'aksesuar' && product.group && product.group !== lastGroup) {
-      const gtitle = document.createElement('div');
-      gtitle.className = 'subgroup-title';
+    if (catKey === "aksesuar" && product.group && product.group !== lastGroup) {
+      const gtitle = document.createElement("div");
+      gtitle.className = "subgroup-title";
       gtitle.textContent = product.group;
       listContainer.appendChild(gtitle);
       lastGroup = product.group;
     }
 
-    const card = document.createElement('div');
-    card.className = 'product-card';
+    const card = document.createElement("div");
+    card.className = "product-card";
 
     const imgSrc = product.imageUrl || "https://via.placeholder.com/85?text=Hims";
     const linkUrl = product.productUrl || `https://www.elektromarketim.com/arama?q=${product.code}`;
@@ -322,13 +349,15 @@ function updatePriceAndDiscount(product, index) {
   const sitePriceSpan = document.getElementById(`site-price-${index}`);
   const discountDiv = document.getElementById(`discount-${index}`);
 
+  // KDV DAHİL liste fiyatı (TL) = Euro * Kur * 1.20
   const listPriceWithVAT_TL = product.euroPrice * currentEuroRate * KDV_ORANI;
   listTLSpan.innerText = `${listPriceWithVAT_TL.toFixed(2)} ₺`;
 
   if (sitePrice && sitePrice > 0) {
     sitePriceSpan.innerText = `${sitePrice.toFixed(2)} ₺`;
+    // İskonto: KDV DAHİL liste fiyatı üzerinden
     const discountRate = ((listPriceWithVAT_TL - sitePrice) / listPriceWithVAT_TL) * 100;
-    const color = discountRate > 0 ? 'green' : 'red';
+    const color = discountRate > 0 ? "green" : "red";
     discountDiv.innerHTML = `
       <div style="font-size:0.8em; color:#555; margin-bottom:4px;">Kur: 1 € = ${currentEuroRate.toFixed(4)} ₺</div>
       <div class="discount-text" style="color: ${color};">
@@ -336,8 +365,9 @@ function updatePriceAndDiscount(product, index) {
       </div>
     `;
   } else {
-    sitePriceSpan.innerText = `Sitede Fiyatı Yok`;
-    discountDiv.innerHTML = `<div class="discount-text" style="color: #555;">Bu ürünün fiyatı siteye eklenmemiş.</div>`;
+    sitePriceSpan.innerText = `STOKLARDA KALMAMIŞ`;
+    sitePriceSpan.style.color = "#dc3545";
+    discountDiv.innerHTML = `<div class="discount-text" style="color: #555;">Bu ürün şu anda stoklarda bulunmamaktadır.</div>`;
   }
 }
 
