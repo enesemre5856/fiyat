@@ -8,47 +8,103 @@
     <title>Hims Fiyat Listesi</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 10px; background-color: #f4f4f9; }
-        .header { text-align: center; padding: 15px; background: #0056b3; color: white; border-radius: 10px; margin-bottom: 15px; cursor: pointer; user-select: none; }
-        .product-card { background: white; padding: 15px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); user-select: none; -webkit-user-select: none; }
+        
+        /* Başlık ve Logo */
+        .header { text-align: center; padding: 15px; background: #0056b3; color: white; border-radius: 10px; margin-bottom: 15px; cursor: pointer; user-select: none; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .header img { max-width: 120px; height: auto; margin-bottom: 5px; border-radius: 5px; }
+        
+        /* Ürün Kartı (Yan Yana Görünüm) */
+        .product-card { display: flex; background: white; padding: 12px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); user-select: none; -webkit-user-select: none; align-items: flex-start; gap: 12px; }
+        
+        /* Ürün Resmi */
+        .product-img { width: 90px; height: 90px; object-fit: contain; border-radius: 6px; background-color: #f0f0f0; border: 1px solid #ddd; cursor: pointer; }
+        
+        /* Ürün Bilgileri */
+        .product-info { flex: 1; display: flex; flex-direction: column; }
         .product-code { font-weight: bold; color: #0056b3; font-size: 1.1em; }
-        .product-desc { font-size: 0.9em; color: #555; margin: 5px 0; }
-        .prices { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.95em; }
+        .product-desc { font-size: 0.85em; color: #555; margin: 4px 0; }
+        
+        /* Fiyatlar */
+        .prices { display: flex; justify-content: space-between; margin-top: auto; padding-top: 8px; font-size: 0.9em; border-top: 1px dashed #eee; }
         .euro-price { color: #333; font-weight: bold; }
         .tl-price { color: #28a745; font-weight: bold; }
-        .discount-section { display: none; margin-top: 10px; padding: 10px; background: #ffe6e6; border-left: 4px solid #dc3545; border-radius: 4px; }
-        .discount-text { color: #dc3545; font-weight: bold; font-size: 1.1em; }
+        
+        /* Gizli İskonto Bölümü */
+        .discount-section { display: none; margin-top: 8px; padding: 8px; background: #ffe6e6; border-left: 3px solid #dc3545; border-radius: 4px; font-size: 0.9em; }
+        .discount-text { color: #dc3545; font-weight: bold; }
     </style>
 </head>
 <body>
 
+    <!-- ÜST BAŞLIK VE LOGO -->
     <div class="header" id="secretTrigger">
-        <h2>Hims Fiyat Listesi</h2>
-        <p style="font-size: 0.8em; margin: 0;">(Gizli mod için başlığa 3 kez hızlıca dokunun)</p>
+        <!-- Kendi logonun linkini aşağıdaki src="" içine yapıştırabilirsin -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/200px-No_image_available.svg.png" alt="Hims Logo" id="himsLogo">
+        <h2 style="margin: 0;">Hims Fiyat Listesi</h2>
     </div>
 
     <div id="productList"></div>
 
     <script>
-        // PDF'ten alınan örnek ürün verileri (Liste Fiyatları Euro cinsinden)
+        // PDF'ten alınan ürün verileri
+        // imageUrl: Ürünün resim linki (Kendi resimlerinin linkini buraya yapıştır)
+        // productUrl: Resme tıklandığında gidilecek link (Site üzerinden aratır)
         const products = [
-            { code: "HEVC-22", desc: "22kW Bireysel Duvar Tipi Araç Şarj Cihazı", euroPrice: 682.5 },
-            { code: "HCDKB-22", desc: "22kW Destekli 5m Kablolu Beyaz Smart Şarj İstasyonu", euroPrice: 793.8 },
-            { code: "HCDKS-22", desc: "22kW Destekli 5m Kablolu Siyah Smart Şarj İstasyonu", euroPrice: 793.8 },
-            { code: "HCTK-7", desc: "7kW Ev Tipi Taşınabilir Elektrikli Araç Şarj Cihazı", euroPrice: 348.6 },
-            { code: "HCTK-11-PS-S", desc: "11kW Akıllı Taşınabilir Araç Şarj Cihazı", euroPrice: 573.3 },
-            { code: "HCDC-S1-30", desc: "30kW DC Hızlı Şarj İstasyonu - Tek Soket", euroPrice: 6127.0 }
+            { 
+                code: "HEVC-22", 
+                desc: "22kW Bireysel Duvar Tipi Araç Şarj Cihazı", 
+                euroPrice: 682.5,
+                imageUrl: "https://via.placeholder.com/100?text=Resim+Yok",
+                productUrl: "https://www.elektromarketim.com/arama?q=HEVC-22"
+            },
+            { 
+                code: "HCDKB-22", 
+                desc: "22kW Destekli 5m Kablolu Beyaz Smart Şarj İstasyonu", 
+                euroPrice: 793.8,
+                imageUrl: "https://via.placeholder.com/100?text=Resim+Yok",
+                productUrl: "https://www.elektromarketim.com/arama?q=HCDKB-22"
+            },
+            { 
+                code: "HCDKS-22", 
+                desc: "22kW Destekli 5m Kablolu Siyah Smart Şarj İstasyonu", 
+                euroPrice: 793.8,
+                imageUrl: "https://via.placeholder.com/100?text=Resim+Yok",
+                productUrl: "https://www.elektromarketim.com/arama?q=HCDKS-22"
+            },
+            { 
+                code: "HCTK-7", 
+                desc: "7kW Ev Tipi Taşınabilir Elektrikli Araç Şarj Cihazı", 
+                euroPrice: 348.6,
+                imageUrl: "https://via.placeholder.com/100?text=Resim+Yok",
+                productUrl: "https://www.elektromarketim.com/arama?q=HCTK-7"
+            },
+            { 
+                code: "HCDC-S1-30", 
+                desc: "30kW DC Hızlı Şarj İstasyonu - Tek Soket", 
+                euroPrice: 6127.0,
+                imageUrl: "https://via.placeholder.com/100?text=Resim+Yok",
+                productUrl: "https://www.elektromarketim.com/arama?q=HCDC-S1-30"
+            }
         ];
 
-        const EURO_KURU = 48.0; // Güncel kuru buradan değiştirebilirsin
+        const MOCK_PRICES = {
+            "HEVC-22": 32064.00,
+            "HCDKB-22": 37293.00,
+            "HCDKS-22": 37293.00,
+            "HCTK-7": 16384.00,
+            "HCDC-S1-30": 287969.00
+        };
+
+        const EURO_KURU = 48.0; 
         let secretModeActive = false;
         let tapCount = 0;
         let tapTimer;
 
-        // Gizli Modu Tetikleme (Başlığa 3 kez tıklama)
+        // Gizli Modu Tetikleme (Başlığa/Logoya 3 kez tıklama)
         document.getElementById('secretTrigger').addEventListener('click', () => {
             tapCount++;
             clearTimeout(tapTimer);
-            tapTimer = setTimeout(() => { tapCount = 0; }, 500); // 500ms içinde tıklanmazsa sıfırla
+            tapTimer = setTimeout(() => { tapCount = 0; }, 500);
             
             if (tapCount === 3) {
                 secretModeActive = !secretModeActive;
@@ -56,87 +112,65 @@
                 document.querySelectorAll('.discount-section').forEach(el => {
                     el.style.display = secretModeActive ? 'block' : 'none';
                 });
-                // Kullanıcıya geri bildirim
-                document.body.style.backgroundColor = secretModeActive ? '#fff3cd' : '#f4f4f9';
             }
         });
 
-        // Fiyat Çekme Fonksiyonu (CORS Proxy kullanarak)
-        async function fetchSitePrice(productCode) {
-            // Not: Site yapısı değişirse buradaki URL ve ayrıştırma mantığı güncellenmelidir.
-            // CORS engelini aşmak için AllOrigins proxy'si kullanılıyor.
-            const targetUrl = `https://www.elektromarketim.com/arama?q=${productCode}`;
-            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
-            
-            try {
-                const response = await fetch(proxyUrl);
-                const data = await response.json();
-                const html = data.contents;
-                
-                // HTML içinden fiyatı ayıklama (Regex ile basitleştirilmiş örnek)
-                // Sitedeki fiyat formatına göre bu kısım güncellenmelidir.
-                const priceMatch = html.match(/(\d+[\.,]?\d*)\s*TL/i) || html.match(/(\d+[\.,]?\d*)\s*₺/);
-                
-                if (priceMatch) {
-                    // TL fiyatını sayıya çevir (örn: "32.064,00" -> 32064.00)
-                    let priceStr = priceMatch[1].replace(/\./g, '').replace(',', '.');
-                    return parseFloat(priceStr);
-                }
-                return null;
-            } catch (error) {
-                console.error("Fiyat çekilemedi:", error);
-                return null;
-            }
-        }
-
-        // Arayüzü Çizdirme
-        async function renderProducts() {
+        // Arayüzü Çiz
+        function renderProducts() {
             const listContainer = document.getElementById('productList');
-            
-            for (let product of products) {
-                // Siteden TL fiyatını çek
-                const sitePrice = await fetchSitePrice(product.code);
-                
-                // İskonto Hesaplama
-                const expectedTL = product.euroPrice * EURO_KURU;
-                let discountHTML = "";
-                
-                if (sitePrice && expectedTL > 0) {
-                    const discountRate = ((expectedTL - sitePrice) / expectedTL) * 100;
-                    const color = discountRate > 0 ? 'green' : 'red';
-                    discountHTML = `
-                        <div class="discount-section">
-                            <div>Beklenen Fiyat: ${expectedTL.toFixed(2)} ₺</div>
-                            <div class="discount-text" style="color: ${color};">
-                                İskonto Oranı: %${discountRate.toFixed(1)}
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    discountHTML = `
-                        <div class="discount-section">
-                            <div class="discount-text">Sitede fiyat bulunamadı veya hesaplanamadı.</div>
-                        </div>
-                    `;
-                }
+            listContainer.innerHTML = '';
 
-                // Kart HTML'i
+            products.forEach((product, index) => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
+                
                 card.innerHTML = `
-                    <div class="product-code">${product.code}</div>
-                    <div class="product-desc">${product.desc}</div>
-                    <div class="prices">
-                        <span class="euro-price">Liste: ${product.euroPrice} €</span>
-                        <span class="tl-price">Site: ${sitePrice ? sitePrice.toFixed(2) + ' ₺' : 'Çekiliyor...'}</span>
+                    <!-- RESİM VE TIKLAMA ÖZELLİĞİ -->
+                    <a href="${product.productUrl}" target="_blank">
+                        <img src="${product.imageUrl}" class="product-img" alt="${product.code}">
+                    </a>
+                    
+                    <div class="product-info">
+                        <div class="product-code">${product.code}</div>
+                        <div class="product-desc">${product.desc}</div>
+                        
+                        <div class="prices">
+                            <span class="euro-price">Liste: ${product.euroPrice} €</span>
+                            <span class="tl-price" id="price-${index}">Fiyat Çekiliyor...</span>
+                        </div>
+                        
+                        <div class="discount-section" id="discount-${index}" style="display: ${secretModeActive ? 'block' : 'none'};">
+                            <div class="discount-text">Hesaplanıyor...</div>
+                        </div>
                     </div>
-                    ${discountHTML}
                 `;
                 listContainer.appendChild(card);
+                fetchPriceAndUpdate(product, index);
+            });
+        }
+
+        // Fiyat Çekme ve İskonto
+        async function fetchPriceAndUpdate(product, index) {
+            let sitePrice = MOCK_PRICES[product.code] || null; // Şimdilik test fiyatı kullanıyoruz
+
+            const priceSpan = document.getElementById(`price-${index}`);
+            const discountDiv = document.getElementById(`discount-${index}`);
+            
+            if (sitePrice) {
+                priceSpan.innerText = `${sitePrice.toFixed(2)} ₺`;
+                const expectedTL = product.euroPrice * EURO_KURU;
+                const discountRate = ((expectedTL - sitePrice) / expectedTL) * 100;
+                const color = discountRate > 0 ? 'green' : 'red';
+                
+                discountDiv.innerHTML = `
+                    <div style="font-size:0.8em; color:#555;">Beklenen: ${expectedTL.toFixed(2)} ₺</div>
+                    <div class="discount-text" style="color: ${color};">
+                        İskonto: %${discountRate.toFixed(1)}
+                    </div>
+                `;
             }
         }
 
-        // Başlat
         renderProducts();
     </script>
 </body>
