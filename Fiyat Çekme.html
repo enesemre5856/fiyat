@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Hims Fiyat Listesi</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 10px; background-color: #f4f4f9; }
+        
+        .header { text-align: center; padding: 15px; background: #0056b3; color: white; border-radius: 10px; margin-bottom: 15px; cursor: pointer; user-select: none; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .header img { max-width: 100px; height: auto; margin-bottom: 5px; border-radius: 5px; background: white; padding: 5px; }
+        
+        .product-card { display: flex; background: white; padding: 12px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); user-select: none; -webkit-user-select: none; align-items: flex-start; gap: 12px; }
+        .product-img { width: 90px; height: 90px; object-fit: contain; border-radius: 6px; background-color: #f0f0f0; border: 1px solid #ddd; cursor: pointer; }
+        .product-info { flex: 1; display: flex; flex-direction: column; }
+        .product-code { font-weight: bold; color: #0056b3; font-size: 1.1em; }
+        .product-desc { font-size: 0.85em; color: #555; margin: 4px 0; }
+        
+        /* Fiyat Satırları Düzeni */
+        .prices { display: flex; flex-direction: column; margin-top: auto; padding-top: 8px; font-size: 0.85em; border-top: 1px dashed #eee; gap: 4px; }
+        .price-row { display: flex; justify-content: space-between; align-items: center; }
+        .euro-price { color: #333; font-weight: bold; }
+        .list-price-tl { color: #666; font-weight: bold; }
+        .tl-price { color: #28a745; font-weight: bold; font-size: 1.05em; }
+        .separator { border-top: 1px dotted #ccc; margin-top: 4px; padding-top: 4px; }
+        
+        /* Gizli İskonto Bölümü */
+        .discount-section { display: none; margin-top: 8px; padding: 8px; background: #ffe6e6; border-left: 3px solid #dc3545; border-radius: 4px; font-size: 0.9em; }
+        .discount-text { color: #dc3545; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="header" id="secretTrigger">
+        <img src="https://himstech.com/favicon.png" alt="Hims Logo">
+        <h2 style="margin: 0;">Hims Fiyat Listesi</h2>
+    </div>
+
+    <div id="productList"></div>
+
+    <script>
+        const products = [
+            { 
+                code: "HEVC-22", 
+                desc: "22kW Bireysel Duvar Tipi Araç Şarj Cihazı", 
+                euroPrice: 682.5,
+                imageUrl: "https://www.elektromarketim.com/hims-hevc-22-22kw-bireysel-duvar-tipi-arac-sarj-cihazi-ac-elektrikli-arac-sarj-istasyonlari-hims-520133-11-B.jpg",
+                productUrl: "https://www.elektromarketim.com/hims-hevc-22-22kw-bireysel-duvar-tipi-arac-sarj-cihazi"
+            },
+            { 
+                code: "HCDKB-22", 
+                desc: "22kW Destekli 5m Kablolu Beyaz Smart Şarj İstasyonu", 
+                euroPrice: 793.8,
+                imageUrl: "https://www.elektromarketim.com/hims-hcdkb-22-22kw-destekli-5m-kablolu-smart-beyaz-elektrikli-arac-sarj-istasyonu-ac-elektrikli-arac-sarj-istasyonlari-hims-520095-11-B.jpg",
+                productUrl: "https://www.elektromarketim.com/hims-hcdkb-22-22kw-destekli-5m-kablolu-smart-beyaz-elektrikli-arac-sarj-istasyonu"
+            },
+            { 
+                code: "HCDKS-22", 
+                desc: "22kW Destekli 5m Kablolu Siyah Smart Şarj İstasyonu", 
+                euroPrice: 793.8,
+                imageUrl: "https://www.elektromarketim.com/hims-hcdkb-22-22kw-destekli-5m-kablolu-smart-beyaz-elektrikli-arac-sarj-istasyonu-ac-elektrikli-arac-sarj-istasyonlari-hims-520095-11-B.jpg",
+                productUrl: "https://www.elektromarketim.com/arama?q=HCDKS-22"
+            },
+            { 
+                code: "HCTK-7", 
+                desc: "7kW Ev Tipi Taşınabilir Elektrikli Araç Şarj Cihazı", 
+                euroPrice: 348.6,
+                imageUrl: "https://www.elektromarketim.com/hims-hctk-7-7kw-ev-tipi-tasinabilir-elektrikli-arac-sarj-cihazi-ac-elektrikli-arac-sarj-istasyonlari-hims-520173-11-B.jpg",
+                productUrl: "https://www.elektromarketim.com/hims-hctk-7-7kw-ev-tipi-tasinabilir-elektrikli-arac-sarj-cihazi"
+            },
+            { 
+                code: "HCDC-S1-30", 
+                desc: "30kW DC Hızlı Şarj İstasyonu - Tek Soket", 
+                euroPrice: 6127.0,
+                imageUrl: "https://www.elektromarketim.com/hims-hevc-22-22kw-bireysel-duvar-tipi-arac-sarj-cihazi-ac-elektrikli-arac-sarj-istasyonlari-hims-520133-11-B.jpg",
+                productUrl: "https://www.elektromarketim.com/arama?q=HCDC-S1-30"
+            }
+        ];
+
+        const SITE_PRICES = {
+            "HEVC-22": 32064.00,
+            "HCDKB-22": 37293.00,
+            "HCDKS-22": 37293.00,
+            "HCTK-7": 16377.00,
+            "HCDC-S1-30": 287969.00
+        };
+
+        const KDV_ORANI = 1.20; 
+        let currentEuroRate = 48.0; 
+        let secretModeActive = false;
+        let tapCount = 0;
+        let tapTimer;
+
+        async function fetchTCMBEuroRate() {
+            const tcmbUrl = "https://www.tcmb.gov.tr/kurlar/today.xml";
+            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(tcmbUrl)}`;
+            
+            try {
+                const response = await fetch(proxyUrl);
+                const data = await response.json();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+                
+                const eurNode = xmlDoc.querySelector('Currency[Kod="EUR"]');
+                if (eurNode) {
+                    const banknoteSelling = eurNode.querySelector('BanknoteSelling').textContent;
+                    if (banknoteSelling && parseFloat(banknoteSelling) > 0) {
+                        currentEuroRate = parseFloat(banknoteSelling);
+                    }
+                }
+            } catch (error) {
+                console.error("TCMB kuru çekilemedi, varsayılan kur kullanılıyor:", error);
+            }
+            
+            renderProducts();
+        }
+
+        document.getElementById('secretTrigger').addEventListener('click', () => {
+            tapCount++;
+            clearTimeout(tapTimer);
+            tapTimer = setTimeout(() => { tapCount = 0; }, 500);
+            
+            if (tapCount === 3) {
+                secretModeActive = !secretModeActive;
+                tapCount = 0;
+                document.querySelectorAll('.discount-section').forEach(el => {
+                    el.style.display = secretModeActive ? 'block' : 'none';
+                });
+            }
+        });
+
+        function renderProducts() {
+            const listContainer = document.getElementById('productList');
+            listContainer.innerHTML = '';
+
+            products.forEach((product, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                card.innerHTML = `
+                    <a href="${product.productUrl}" target="_blank">
+                        <img src="${product.imageUrl}" class="product-img" alt="${product.code}">
+                    </a>
+                    
+                    <div class="product-info">
+                        <div class="product-code">${product.code}</div>
+                        <div class="product-desc">${product.desc}</div>
+                        
+                        <div class="prices">
+                            <div class="price-row">
+                                <span>Liste Fiyatı (KDV Hariç):</span>
+                                <span class="euro-price">${product.euroPrice} €</span>
+                            </div>
+                            <div class="price-row">
+                                <span>KDV Dahil Liste Fiyatı:</span>
+                                <span class="list-price-tl" id="list-tl-${index}">Hesaplanıyor...</span>
+                            </div>
+                            <div class="price-row separator">
+                                <span>Site Satış Fiyatı:</span>
+                                <span class="tl-price" id="site-price-${index}">Çekiliyor...</span>
+                            </div>
+                        </div>
+                        
+                        <div class="discount-section" id="discount-${index}" style="display: ${secretModeActive ? 'block' : 'none'};">
+                            <div class="discount-text">Hesaplanıyor...</div>
+                        </div>
+                    </div>
+                `;
+                listContainer.appendChild(card);
+                updatePriceAndDiscount(product, index);
+            });
+        }
+
+        function updatePriceAndDiscount(product, index) {
+            const sitePrice = SITE_PRICES[product.code];
+            const listTLSpan = document.getElementById(`list-tl-${index}`);
+            const sitePriceSpan = document.getElementById(`site-price-${index}`);
+            const discountDiv = document.getElementById(`discount-${index}`);
+            
+            // KDV Dahil Liste Fiyatı (TL)
+            const listPriceWithVAT_TL = product.euroPrice * currentEuroRate * KDV_ORANI;
+            listTLSpan.innerText = `${listPriceWithVAT_TL.toFixed(2)} ₺`;
+            
+            if (sitePrice) {
+                sitePriceSpan.innerText = `${sitePrice.toFixed(2)} ₺`;
+                
+                // İskonto Hesaplama
+                const discountRate = ((listPriceWithVAT_TL - sitePrice) / listPriceWithVAT_TL) * 100;
+                const color = discountRate > 0 ? 'green' : 'red';
+                
+                discountDiv.innerHTML = `
+                    <div style="font-size:0.8em; color:#555; margin-bottom:4px;">Kullanılan Kur: 1 € = ${currentEuroRate.toFixed(4)} ₺</div>
+                    <div class="discount-text" style="color: ${color};">
+                        İskonto Oranı: %${discountRate.toFixed(1)}
+                    </div>
+                `;
+            } else {
+                sitePriceSpan.innerText = `Fiyat Bulunamadı`;
+                discountDiv.innerHTML = `<div class="discount-text">Fiyat hesaplanamadı.</div>`;
+            }
+        }
+
+        fetchTCMBEuroRate();
+    </script>
+</body>
+</html>
