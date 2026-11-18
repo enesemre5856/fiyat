@@ -39,6 +39,8 @@
   .discount-section { display: none; margin-top: 8px; padding: 8px; background: #ffe6e6; border-left: 3px solid #dc3545; border-radius: 4px; font-size: 0.85em; }
   .discount-text { color: #dc3545; font-weight: bold; }
   .subgroup-title { font-size: 0.9em; font-weight: 700; color: #444; margin: 15px 0 8px 0; padding-bottom: 4px; border-bottom: 1px solid #ddd; }
+
+  .price-ts { font-size: 0.7em; color: #999; text-align: right; }
 </style>
 </head>
 <body>
@@ -75,34 +77,34 @@ const categories = {
   ac: {
     title: "AC ŞARJ",
     products: [
-      { code: "HEVC-22", desc: "22kW Bireysel Duvar Tipi Araç Şarj Cihazı", euroPrice: 682.5, sitePrice: 32064.00,
+      { code: "HEVC-22", desc: "22kW Bireysel Duvar Tipi Araç Şarj Cihazı", euroPrice: 737, sitePrice: 34700.00,
         imageUrl: "https://www.elektromarketim.com/hims-hevc-22-22kw-bireysel-duvar-tipi-arac-sarj-cihazi-ac-elektrikli-arac-sarj-istasyonlari-hims-520133-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hevc-22-22kw-bireysel-duvar-tipi-arac-sarj-cihazi" },
-      { code: "HCDKB-22", desc: "22kW Destekli 5m Kablolu Beyaz Smart Şarj İstasyonu", euroPrice: 793.8, sitePrice: 37293.00,
+      { code: "HCDK-22-B", desc: "22kW Destekli 5m Kablolu Beyaz Smart Şarj İstasyonu", euroPrice: 857, sitePrice: 40300.00,
         imageUrl: "https://www.elektromarketim.com/hims-hcdkb-22-22kw-destekli-5m-kablolu-smart-beyaz-elektrikli-arac-sarj-istasyonu-ac-elektrikli-arac-sarj-istasyonlari-hims-520095-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hcdkb-22-22kw-destekli-5m-kablolu-smart-beyaz-elektrikli-arac-sarj-istasyonu" },
-      { code: "HCDKS-22", desc: "22kW Destekli 5m Kablolu Siyah Smart Şarj İstasyonu", euroPrice: 793.8, sitePrice: null,
+      { code: "HCDK-22-S", desc: "22kW Destekli 5m Kablolu Siyah Smart Şarj İstasyonu", euroPrice: 857, sitePrice: null,
         imageUrl: "https://www.elektromarketim.com/hims-hcdks-22-siyah-22kw-5m-kablolu-smart-elektrikli-arac-sarj-istasyonu-ac-elektrikli-arac-sarj-istasyonlari-hims-520100-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hcdks-22-siyah-22kw-5m-kablolu-smart-elektrikli-arac-sarj-istasyonu" },
-      { code: "HCTK-7", desc: "7kW Ev Tipi Taşınabilir Araç Şarj Cihazı", euroPrice: 348.6, sitePrice: 16377.00,
+      { code: "HCTK-7-PS", desc: "7kW Ev Tipi Taşınabilir Araç Şarj Cihazı", euroPrice: 376, sitePrice: 17700.00,
         imageUrl: "https://www.elektromarketim.com/hims-hctk-7-7kw-ev-tipi-tasinabilir-elektrikli-arac-sarj-cihazi-ac-elektrikli-arac-sarj-istasyonlari-hims-520173-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hctk-7-7kw-ev-tipi-tasinabilir-elektrikli-arac-sarj-cihazi" },
-      { code: "HCTK-11-PS", desc: "11kW Ev Tipi Taşınabilir Araç Şarj Cihazı", euroPrice: 367.5, sitePrice: 17265.00,
+      { code: "HCTK-11-PS", desc: "11kW Ev Tipi Taşınabilir Araç Şarj Cihazı", euroPrice: 397, sitePrice: 18700.00,
         imageUrl: "https://www.elektromarketim.com/hims-hctk-11-11kw-ev-tipi-tasinabilir-elektrikli-arac-sarj-cihazi-ac-elektrikli-arac-sarj-istasyonlari-hims-520174-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hctk-11-11kw-ev-tipi-tasinabilir-elektrikli-arac-sarj-cihazi" },
-      { code: "HCTK-11-PS-S", desc: "11kW Akıllı Taşınabilir Araç Şarj Cihazı", euroPrice: 573.3, sitePrice: 26934.00,
+      { code: "HCTK-11-PS-S", desc: "11kW Akıllı Taşınabilir Araç Şarj Cihazı", euroPrice: 619, sitePrice: 29100.00,
         imageUrl: "https://www.elektromarketim.com/hims-hctk-11-ps-s-11kw-akilli-tasinabilir-arac-sarj-cihazi-ac-elektrikli-arac-sarj-istasyonlari-hims-520175-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hctk-11-ps-s-11kw-akilli-tasinabilir-arac-sarj-cihazi" },
-      { code: "HCTK-22-G", desc: "22kW Tip 2 Soketli Taşınabilir Araç Şarj Cihazı", euroPrice: 882, sitePrice: 41436.00,
+      { code: "HCTK-22-G", desc: "22kW Tip 2 Soketli Taşınabilir Araç Şarj Cihazı", euroPrice: 953, sitePrice: 44800.00,
         imageUrl: "https://www.elektromarketim.com/hims-hctk-22-g-22kw-gumus-tasinabilir-elektrikli-arac-sarj-cihazi-ac-elektrikli-arac-sarj-istasyonlari-hims-519848-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hctk-22-g-22kw-gumus-tasinabilir-elektrikli-arac-sarj-cihazi" },
-      { code: "HCTK-G-3", desc: "3.7kW Ev Tipi Taşınabilir Araç Şarj Cihazı", euroPrice: 252, sitePrice: 11839.00,
+      { code: "HCTK-3-G", desc: "3.7kW Ev Tipi Taşınabilir Araç Şarj Cihazı", euroPrice: 272, sitePrice: 12800.00,
         imageUrl: "https://www.elektromarketim.com/hims-hctk-g-3-37kw-ev-tipi-tasinabilir-elektrikli-arac-sarj-cihazi-ac-elektrikli-arac-sarj-istasyonlari-hims-520115-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hctk-g-3-37kw-ev-tipi-tasinabilir-elektrikli-arac-sarj-cihazi" },
-      { code: "HCTS-22-B", desc: "22kW Kilitli Soketli Beyaz Taşınabilir Araç Şarj Cihazı", euroPrice: 525, sitePrice: 24665.00,
+      { code: "HCTS-22-B", desc: "22kW Kilitli Soketli Beyaz Taşınabilir Araç Şarj Cihazı", euroPrice: 567, sitePrice: 26700.00,
         imageUrl: "https://www.elektromarketim.com/hims-hcts-22-b-22kw-kilitli-soketli-beyaz-tasinabilir-arac-sarj-cihazi-ac-elektrikli-arac-sarj-istasyonlari-hims-520171-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hcts-22-b-22kw-kilitli-soketli-beyaz-tasinabilir-arac-sarj-cihazi" },
-      { code: "HCTS-22-S", desc: "22kW Kilitli Soketli Siyah Taşınabilir Araç Şarj Cihazı", euroPrice: 525, sitePrice: 24665.00,
+      { code: "HCTS-22-S", desc: "22kW Kilitli Soketli Siyah Taşınabilir Araç Şarj Cihazı", euroPrice: 567, sitePrice: 26700.00,
         imageUrl: "https://www.elektromarketim.com/hims-hcts-22-s-22kw-kilitli-soketli-siyah-tasinabilir-arac-sarj-cihazi-ac-elektrikli-arac-sarj-istasyonlari-hims-520172-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hcts-22-s-22kw-kilitli-soketli-siyah-tasinabilir-arac-sarj-cihazi" }
     ]
@@ -110,28 +112,28 @@ const categories = {
   dc: {
     title: "DC ŞARJ",
     products: [
-      { code: "HCDC-S1-30", desc: "30kW DC Hızlı Şarj İstasyonu - Tek Soket", euroPrice: 6127, sitePrice: 219450.00,
+      { code: "HCDC30-11", desc: "30kW DC Hızlı Şarj İstasyonu - Tek Soket", euroPrice: 6100, sitePrice: 219450.00,
         imageUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-30-kw-tek-soket-dc-elektrikli-arac-sarj-istasyonlari-hims-520102-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-30-kw-tek-soket" },
-      { code: "HCDC-S1-40", desc: "40kW DC Hızlı Şarj İstasyonu - Tek Soket", euroPrice: 7282, sitePrice: null,
+      { code: "HCDC40-11", desc: "40kW DC Hızlı Şarj İstasyonu - Tek Soket", euroPrice: 7300, sitePrice: null,
         imageUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-40-kw-tek-soket-dc-elektrikli-arac-sarj-istasyonlari-hims-520284-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-40-kw-tek-soket" },
-      { code: "HCDC-S1-60", desc: "60kW DC Hızlı Şarj İstasyonu - Tek Soket", euroPrice: 14212, sitePrice: 601679.23,
+      { code: "HCDC60-11", desc: "60kW DC Hızlı Şarj İstasyonu - Tek Soket", euroPrice: 14200, sitePrice: 601679.23,
         imageUrl: "https://www.elektromarketim.com/hims-hcdc-s1-60-tek-soketli-60-kw-dc-hizli-elektrikli-arac-sarj-istasyonu-dc-elektrikli-arac-sarj-istasyonlari-hims-520279-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hcdc-s1-60-tek-soketli-60-kw-dc-hizli-elektrikli-arac-sarj-istasyonu" },
-      { code: "HCDC-S2-60", desc: "60kW DC Hızlı Şarj İstasyonu - Çift Soket", euroPrice: 18480, sitePrice: 782369.28,
+      { code: "HCDC60-12", desc: "60kW DC Hızlı Şarj İstasyonu - Çift Soket", euroPrice: 18500, sitePrice: 782369.28,
         imageUrl: "https://www.elektromarketim.com/hims-hcdc-s2-60-cift-soketli-60-kw-dc-hizli-elektrikli-arac-sarj-istasyonu-dc-elektrikli-arac-sarj-istasyonlari-hims-520273-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-hcdc-s2-60-cift-soketli-60-kw-dc-hizli-elektrikli-arac-sarj-istasyonu" },
-      { code: "HCDC-S1-80", desc: "80kW DC Hızlı Şarj İstasyonu - Tek Soket", euroPrice: 16555, sitePrice: 700872.48,
+      { code: "HCDC80-11", desc: "80kW DC Hızlı Şarj İstasyonu - Tek Soket", euroPrice: 16600, sitePrice: 700872.48,
         imageUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-80-kw-tek-soket-dc-elektrikli-arac-sarj-istasyonlari-hims-520282-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-80-kw-tek-soket" },
-      { code: "HCDC-S2-80", desc: "80kW DC Hızlı Şarj İstasyonu - Çift Soket", euroPrice: 20300, sitePrice: 859420.80,
+      { code: "HCDC80-12", desc: "80kW DC Hızlı Şarj İstasyonu - Çift Soket", euroPrice: 20300, sitePrice: 859420.80,
         imageUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-80-kw-cift-soket-dc-elektrikli-arac-sarj-istasyonlari-hims-520276-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-80-kw-cift-soket" },
-      { code: "HCDC-S1-120", desc: "120kW DC Hızlı Şarj İstasyonu - Tek Soket", euroPrice: 19723, sitePrice: 834992.93,
+      { code: "HCDC120-11", desc: "120kW DC Hızlı Şarj İstasyonu - Tek Soket", euroPrice: 19700, sitePrice: 834992.93,
         imageUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-120-kw-tek-soket-dc-elektrikli-arac-sarj-istasyonlari-hims-520280-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-120-kw-tek-soket" },
-      { code: "HCDC-S2-120", desc: "120kW DC Hızlı Şarj İstasyonu - Çift Soket", euroPrice: 22770, sitePrice: 963990.72,
+      { code: "HCDC120-12", desc: "120kW DC Hızlı Şarj İstasyonu - Çift Soket", euroPrice: 22700, sitePrice: 963990.72,
         imageUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-120-kw-cift-soket-dc-elektrikli-arac-sarj-istasyonlari-hims-520274-11-K.jpg",
         productUrl: "https://www.elektromarketim.com/hims-dc-hizli-sarj-istasyonu-120-kw-cift-soket" }
     ]
@@ -139,108 +141,130 @@ const categories = {
   aksesuar: {
     title: "AKSESUARLAR",
     products: [
-      { code: "EMEF-22T2-XY-2", desc: "22kW Type 2 Soketli 2m Araç Şarj Kablosu", euroPrice: 140, sitePrice: null, group: "Araç Şarj Kabloları" },
-      { code: "EMEF-22T2-XY-3", desc: "22kW Type 2 Soketli 3m Araç Şarj Kablosu", euroPrice: 148, sitePrice: null, group: "Araç Şarj Kabloları" },
-      { code: "EMEF-22T2-XY-5", desc: "22kW Type 2 Soketli 5m Araç Şarj Kablosu", euroPrice: 170, sitePrice: null, group: "Araç Şarj Kabloları" },
-      { code: "EMEF-22T2-XY-7", desc: "22kW Type 2 Soketli 7m Araç Şarj Kablosu", euroPrice: 210, sitePrice: null, group: "Araç Şarj Kabloları" },
-      { code: "EMEF-22T2-XY-8", desc: "22kW Type 2 Soketli 8m Araç Şarj Kablosu", euroPrice: 223, sitePrice: null, group: "Araç Şarj Kabloları" },
-      { code: "EMEF-22T2-XY-10", desc: "22kW Type 2 Soketli 10m Araç Şarj Kablosu", euroPrice: 325, sitePrice: null, group: "Araç Şarj Kabloları" },
-      { code: "EMEF-22T2-XY-15", desc: "22kW Type 2 Soketli 15m Araç Şarj Kablosu", euroPrice: 350, sitePrice: null, group: "Araç Şarj Kabloları" },
-      { code: "EMEF-22T2-XY-16", desc: "22kW Type 2 Soketli 16m Araç Şarj Kablosu", euroPrice: 375, sitePrice: null, group: "Araç Şarj Kabloları" },
-      { code: "EMEF-22T2-XY-20", desc: "22kW Type 2 Soketli 20m Araç Şarj Kablosu", euroPrice: 468, sitePrice: null, group: "Araç Şarj Kabloları" },
-      { code: "EMEF-11T2-XY-5", desc: "11kW Tip 2 Siyah Soketli 5m Araç Şarj Kablosu", euroPrice: 119, sitePrice: null, group: "Araç Şarj Kabloları" },
+      { code: "EMEF-22T2-XY-2", desc: "22kW Type 2 Soketli 2m Araç Şarj Kablosu", euroPrice: 151, sitePrice: null, group: "Araç Şarj Kabloları" },
+      { code: "EMEF-22T2-XY-3", desc: "22kW Type 2 Soketli 3m Araç Şarj Kablosu", euroPrice: 160, sitePrice: null, group: "Araç Şarj Kabloları" },
+      { code: "EMEF-22T2-XY-5", desc: "22kW Type 2 Soketli 5m Araç Şarj Kablosu", euroPrice: 184, sitePrice: null, group: "Araç Şarj Kabloları" },
+      { code: "EMEF-22T2-XY-7", desc: "22kW Type 2 Soketli 7m Araç Şarj Kablosu", euroPrice: 227, sitePrice: null, group: "Araç Şarj Kabloları" },
+      { code: "EMEF-22T2-XY-8", desc: "22kW Type 2 Soketli 8m Araç Şarj Kablosu", euroPrice: 241, sitePrice: null, group: "Araç Şarj Kabloları" },
+      { code: "EMEF-22T2-XY-10", desc: "22kW Type 2 Soketli 10m Araç Şarj Kablosu", euroPrice: 351, sitePrice: null, group: "Araç Şarj Kabloları" },
+      { code: "EMEF-22T2-XY-15", desc: "22kW Type 2 Soketli 15m Araç Şarj Kablosu", euroPrice: 378, sitePrice: null, group: "Araç Şarj Kabloları" },
+      { code: "EMEF-22T2-XY-16", desc: "22kW Type 2 Soketli 16m Araç Şarj Kablosu", euroPrice: 405, sitePrice: null, group: "Araç Şarj Kabloları" },
+      { code: "EMEF-22T2-XY-20", desc: "22kW Type 2 Soketli 20m Araç Şarj Kablosu", euroPrice: 505, sitePrice: null, group: "Araç Şarj Kabloları" },
+      { code: "EMEF-11T2-XY-5", desc: "11kW Tip 2 Siyah Soketli 5m Araç Şarj Kablosu", euroPrice: 129, sitePrice: null, group: "Araç Şarj Kabloları" },
 
-      { code: "EMEF-22T2F-XY-5", desc: "22kW 5m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 145, sitePrice: null, group: "İstasyon Kabloları" },
-      { code: "EMEF-22T2F-XY-7", desc: "22kW 7m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 183, sitePrice: null, group: "İstasyon Kabloları" },
-      { code: "EMEF-22T2F-XY-8", desc: "22kW 8m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 195, sitePrice: null, group: "İstasyon Kabloları" },
-      { code: "EMEF-22T2F-XY-10", desc: "22kW 10m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 250, sitePrice: null, group: "İstasyon Kabloları" },
-      { code: "EMEF-22T2F-XY-15", desc: "22kW 15m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 338, sitePrice: null, group: "İstasyon Kabloları" },
-      { code: "EMEF-3T2F-XY-5", desc: "3.6kW Type 2 5m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 68, sitePrice: null, group: "İstasyon Kabloları" },
-      { code: "EMEF-7T2F-XY-5", desc: "7.4kW Type 2 5m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 105, sitePrice: null, group: "İstasyon Kabloları" },
-      { code: "EMEF-11T2F-XY-5", desc: "11kW Type 2 5m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 90, sitePrice: null, group: "İstasyon Kabloları" },
+      { code: "EMEF-22T2F-XY-5", desc: "22kW 5m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 157, sitePrice: null, group: "İstasyon Kabloları" },
+      { code: "EMEF-22T2F-XY-7", desc: "22kW 7m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 198, sitePrice: null, group: "İstasyon Kabloları" },
+      { code: "EMEF-22T2F-XY-8", desc: "22kW 8m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 211, sitePrice: null, group: "İstasyon Kabloları" },
+      { code: "EMEF-22T2F-XY-10", desc: "22kW 10m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 270, sitePrice: null, group: "İstasyon Kabloları" },
+      { code: "EMEF-22T2F-XY-15", desc: "22kW 15m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 365, sitePrice: null, group: "İstasyon Kabloları" },
+      { code: "EMEF-3T2F-XY-5", desc: "3.6kW Type 2 5m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 73, sitePrice: null, group: "İstasyon Kabloları" },
+      { code: "EMEF-7T2F-XY-5", desc: "7.4kW Type 2 5m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 113, sitePrice: null, group: "İstasyon Kabloları" },
+      { code: "EMEF-11T2F-XY-5", desc: "11kW Type 2 5m Şarj İstasyonu Kablosu (Tek Soketli)", euroPrice: 97, sitePrice: null, group: "İstasyon Kabloları" },
 
-      { code: "HCV2L-01", desc: "Hyundai-KİA-Sangyong Uyumlu Tek Çıkışlı V2L Adaptörü", euroPrice: 62, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-02", desc: "MG Uyumlu Tek Çıkışlı V2L Adaptörü", euroPrice: 62, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-03", desc: "BYD-Skywell Uyumlu Tek Çıkışlı V2L Adaptörü", euroPrice: 62, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-31-1", desc: "Hyundai-KİA-Sangyong V2L Tekli Uzatma Priz Adaptör (3m)", euroPrice: 77, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-32-1", desc: "MG Uyumlu V2L Tekli Uzatma Priz Adaptör (3m)", euroPrice: 77, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-33-1", desc: "BYD-Skywell Uyumlu V2L Tekli Uzatma Priz Adaptör (3m)", euroPrice: 77, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-31-2", desc: "Hyundai-KİA-Sangyong V2L 2'li Uzatma Priz Adaptör (3m)", euroPrice: 83, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-32-2", desc: "MG Uyumlu V2L 2'li Uzatma Priz Adaptör (3m)", euroPrice: 83, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-33-2", desc: "BYD-Skywell Uyumlu V2L 2'li Uzatma Priz Adaptör (3m)", euroPrice: 83, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-31-3", desc: "Hyundai-KİA-Sangyong 3'lü Uzatmalı V2L Adaptörü", euroPrice: 85, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-32-3", desc: "MG Uyumlu 3'lü Uzatmalı V2L Adaptörü (3m)", euroPrice: 85, sitePrice: null, group: "V2L Adaptörler" },
-      { code: "HCV2L-33-3", desc: "BYD-Skywell 3'lü Uzatmalı V2L Adaptörü (3m)", euroPrice: 85, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-01", desc: "Hyundai-KİA-Sangyong Uyumlu Tek Çıkışlı V2L Adaptörü", euroPrice: 50, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-02", desc: "MG · TOGG T10X Uyumlu Tek Çıkışlı V2L Adaptörü", euroPrice: 50, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-03", desc: "BYD-Skywell Uyumlu Tek Çıkışlı V2L Adaptörü", euroPrice: 50, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-11", desc: "Hyundai-KİA-Sangyong V2L Tekli Uzatma Priz Adaptör (3m)", euroPrice: 64, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-12", desc: "MG · TOGG T10X Uyumlu V2L Tekli Uzatma Priz Adaptör (3m)", euroPrice: 64, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-13", desc: "BYD-Skywell Uyumlu V2L Tekli Uzatma Priz Adaptör (3m)", euroPrice: 64, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-21", desc: "Hyundai-KİA-Sangyong V2L 2'li Uzatma Priz Adaptör (3m)", euroPrice: 67, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-22", desc: "MG · TOGG T10X Uyumlu V2L 2'li Uzatma Priz Adaptör (3m)", euroPrice: 67, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-23", desc: "BYD-Skywell Uyumlu V2L 2'li Uzatma Priz Adaptör (3m)", euroPrice: 67, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-31", desc: "Hyundai-KİA-Sangyong 3'lü Uzatmalı V2L Adaptörü", euroPrice: 70, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-32", desc: "MG · TOGG T10X Uyumlu 3'lü Uzatmalı V2L Adaptörü (3m)", euroPrice: 70, sitePrice: null, group: "V2L Adaptörler" },
+      { code: "HCV2L-33", desc: "BYD-Skywell 3'lü Uzatmalı V2L Adaptörü (3m)", euroPrice: 70, sitePrice: null, group: "V2L Adaptörler" },
 
-      { code: "HCC2L-01", desc: "Elektrikli Araçlar ile Uyumlu C2L Adaptör", euroPrice: 82, sitePrice: null, group: "C2L Adaptörler" },
-      { code: "HCC2L-13", desc: "C2L Tekli Uzatma Fişli Adaptör (3m)", euroPrice: 97, sitePrice: null, group: "C2L Adaptörler" },
-      { code: "HCC2L-23", desc: "C2L 2'li Uzatma Fişli Adaptör (3m)", euroPrice: 107, sitePrice: null, group: "C2L Adaptörler" },
-      { code: "HCC2L-31", desc: "Hyundai-KİA-Sangyong 3'lü Uzatmalı C2L Adaptörü (3m)", euroPrice: 114, sitePrice: null, group: "C2L Adaptörler" },
-      { code: "HCC2L13-532", desc: "C2L 5/32A Prizli Uzatma Fişli Adaptör (3m)", euroPrice: 169, sitePrice: null, group: "C2L Adaptörler" },
+      { code: "HCC2L-01", desc: "Elektrikli Araçlar ile Uyumlu C2L Adaptör", euroPrice: 57, sitePrice: null, group: "C2L Adaptörler" },
+      { code: "HCC2L-13", desc: "C2L Tekli Uzatma Fişli Adaptör (3m)", euroPrice: 79, sitePrice: null, group: "C2L Adaptörler" },
+      { code: "HCC2L-23", desc: "C2L 2'li Uzatma Fişli Adaptör (3m)", euroPrice: 85, sitePrice: null, group: "C2L Adaptörler" },
+      { code: "HCC2L-31", desc: "C2L Uzatma Adaptörü, 3 Prizli (3m Kablolu)", euroPrice: 93, sitePrice: null, group: "C2L Adaptörler" },
+      { code: "HCC2L-13-T32", desc: "C2L Uzatma Adaptörü, 5/32 A Prizli (3m Kablolu)", euroPrice: 141, sitePrice: null, group: "C2L Adaptörler" },
 
-      { code: "HCCA-TM32-30", desc: "CEE Norm Adaptör 3x6 TTR 3/32A Fiş - 5/32A Priz (30cm)", euroPrice: 29, sitePrice: null, group: "Dönüştürücüler" },
-      { code: "HCCA-TM16-30", desc: "CEE Norm Adaptör 3x2,5 TTR 1/16A Fiş - 5/32A Priz (30cm)", euroPrice: 23, sitePrice: null, group: "Dönüştürücüler" },
-      { code: "HCTA-TM32-40", desc: "HCTK-22 Quick Konnektörlü İçin 7.4kW Dönüştürücü", euroPrice: 118, sitePrice: null, group: "Dönüştürücüler" },
+      { code: "HCCA-TM32-30-F", desc: "CEE Norm Adaptör 3x6 TTR 3/32A Fiş - 5/32A Priz (30cm)", euroPrice: 31, sitePrice: null, group: "Dönüştürücüler" },
+      { code: "HCCA-TM16-30-F", desc: "CEE Norm Adaptör 3x2,5 TTR 1/16A Fiş - 5/32A Priz (30cm)", euroPrice: 25, sitePrice: null, group: "Dönüştürücüler" },
+      { code: "HCTA-TM32-40", desc: "HCTK-22 Quick Konnektörlü İçin 7.4kW Dönüştürücü", euroPrice: 127, sitePrice: null, group: "Dönüştürücüler" },
       { code: "EMEP-P-32-TS", desc: "Pano Priz 4 Noktadan Montajlı Trifaze 16/32/63A", euroPrice: 85, sitePrice: null, group: "Dönüştürücüler" },
       { code: "EMEP-P-K-32-TS", desc: "Pano Priz 4 Noktadan Montajlı Trifaze 16/32/63A", euroPrice: 70, sitePrice: null, group: "Dönüştürücüler" },
-      { code: "EMMA-D01", desc: "Priz Tutucu", euroPrice: 32, sitePrice: null, group: "Dönüştürücüler" },
+      { code: "EMMA-D01", desc: "Duvar Askı Aparatı (Type 2 soketi tutar)", euroPrice: 8, sitePrice: null, group: "Dönüştürücüler" },
 
-      { code: "HCMA", desc: "Elektrikli Araç Şarj İstasyonu Pedestalı", euroPrice: 280, sitePrice: null, group: "Standlar" },
-      { code: "HCMA-S", desc: "Şapkalı Elektrikli Araç Şarj İstasyonu Pedestalı", euroPrice: 310, sitePrice: null, group: "Standlar" },
-      { code: "HCS01", desc: "Metal Ürün Tanıtım Standı Tekerlekli", euroPrice: 500, sitePrice: null, group: "Standlar" },
+      { code: "HCMA", desc: "Elektrikli Araç Şarj İstasyonu Pedestalı", euroPrice: 302, sitePrice: null, group: "Standlar" },
+      { code: "HCMA-S", desc: "Şapkalı Elektrikli Araç Şarj İstasyonu Pedestalı", euroPrice: 335, sitePrice: null, group: "Standlar" },
+      { code: "HCS01", desc: "Metal Ürün Tanıtım Standı Tekerlekli", euroPrice: 540, sitePrice: null, group: "Standlar" },
 
-      { code: "HCB4010", desc: "Kablo Çantası", euroPrice: 39, sitePrice: null, group: "Çantalar" },
-      { code: "HCBV2L2010", desc: "V2L Çantası", euroPrice: 17, sitePrice: null, group: "Çantalar" },
-      { code: "HCTB45", desc: "Taşınabilir İstasyon Çantası", euroPrice: 45, sitePrice: null, group: "Çantalar" }
+      { code: "HCB4010", desc: "Kablo Çantası", euroPrice: 42, sitePrice: null, group: "Çantalar" },
+      { code: "HCBV2L2010", desc: "V2L Çantası", euroPrice: 18, sitePrice: null, group: "Çantalar" },
+      { code: "HCB45", desc: "Taşınabilir İstasyon Çantası", euroPrice: 49, sitePrice: null, group: "Çantalar" }
     ]
   }
 };
 
 const KDV_ORANI = 1.20;
 // Fallback: senin verdiğin HTML kaynağındaki EUR_TO_TL değeri
-let currentEuroRate = 55.60;
-let currentEuroRateSource = "sabit (son bilinen)";
+let currentEuroRate = 55.80;
+let currentEuroRateSource = "sabit, kur alınamadı";
 let secretModeActive = false;
 let catTapCount = 0;
 let catTapTimer;
 let currentCategory = null;
 
-// TCMB Efektif Satış Kuru Çekme (3 farklı proxy dener)
+// ---- EUR/TL kuru: sırayla birkaç kaynak denenir, ilk çalışan kullanılır ----
+async function getJSON(url, ms = 8000) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), ms);
+  try {
+    const res = await fetch(url, { signal: ctrl.signal });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    return await res.json();
+  } finally { clearTimeout(t); }
+}
+
+const rateSources = [
+  // 1) TCMB verisini JSON olarak sunan servis (Efektif Satış)
+  async () => {
+    const d = await getJSON("https://hasanadiguzel.com.tr/api/kurgetir");
+    const list = d.TCMB_AnlikKurBilgileri || [];
+    const eur = list.find(x => /EUR/i.test(x.CurrencyName || "") || /EURO/i.test(x.Isim || ""));
+    const v = parseFloat(eur && eur.BanknoteSelling);
+    return v > 0 ? { rate: v, source: "TCMB Efektif Satış" } : null;
+  },
+  // 2) Piyasa satış kuru
+  async () => {
+    const d = await getJSON("https://finans.truncgil.com/v4/today.json");
+    const v = parseFloat(d && d.EUR && (d.EUR.Selling ?? d.EUR.selling));
+    return v > 0 ? { rate: v, source: "piyasa satış (Truncgil)" } : null;
+  },
+  // 3) Uluslararası orta kur
+  async () => {
+    const d = await getJSON("https://open.er-api.com/v6/latest/EUR");
+    const v = parseFloat(d && d.rates && d.rates.TRY);
+    return v > 0 ? { rate: v, source: "piyasa orta kur (open.er-api)" } : null;
+  },
+  // 4) Yedek: jsDelivr üzerinden günlük kur dosyası
+  async () => {
+    const d = await getJSON("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json");
+    const v = parseFloat(d && d.eur && d.eur.try);
+    return v > 0 ? { rate: v, source: "piyasa orta kur (currency-api)" } : null;
+  },
+  // 5) Son çare: ECB referans kuru
+  async () => {
+    const d = await getJSON("https://api.frankfurter.app/latest?from=EUR&to=TRY");
+    const v = parseFloat(d && d.rates && d.rates.TRY);
+    return v > 0 ? { rate: v, source: "ECB referans kuru" } : null;
+  }
+];
+
 async function fetchTCMBEuroRate() {
-  const tcmbUrl = "https://www.tcmb.gov.tr/kurlar/today.xml";
-  const proxies = [
-    { url: `https://api.allorigins.win/raw?url=${encodeURIComponent(tcmbUrl)}`, type: "text" },
-    { url: `https://corsproxy.io/?${encodeURIComponent(tcmbUrl)}`, type: "text" },
-    { url: `https://api.allorigins.win/get?url=${encodeURIComponent(tcmbUrl)}`, type: "json" }
-  ];
-
-  for (const proxy of proxies) {
+  for (const src of rateSources) {
     try {
-      const res = await fetch(proxy.url);
-      if (!res.ok) continue;
-      let xmlText;
-      if (proxy.type === "json") {
-        const data = await res.json();
-        xmlText = data.contents;
-      } else {
-        xmlText = await res.text();
-      }
-      if (!xmlText || xmlText.length < 100) continue;
-
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(xmlText, "text/xml");
-      const eurNode = xmlDoc.querySelector('Currency[Kod="EUR"]');
-      if (eurNode) {
-        const banknoteSelling = eurNode.querySelector("BanknoteSelling")?.textContent;
-        if (banknoteSelling && parseFloat(banknoteSelling) > 0) {
-          currentEuroRate = parseFloat(banknoteSelling);
-          currentEuroRateSource = "TCMB Efektif Satış";
-          console.log("✅ TCMB EUR Efektif Satış:", currentEuroRate);
-          break;
-        }
+      const r = await src();
+      if (r && r.rate > 20 && r.rate < 200) {   // makul aralık kontrolü
+        currentEuroRate = r.rate;
+        currentEuroRateSource = r.source;
+        console.log("✅ EUR kuru:", r.rate, r.source);
+        break;
       }
     } catch (e) {
-      console.warn("Proxy başarısız:", proxy.url, e.message);
+      console.warn("Kur kaynağı başarısız:", e.message);
     }
   }
 
@@ -332,6 +356,7 @@ function renderProducts(catKey) {
             <span>Site Satış Fiyatı:</span>
             <span class="tl-price" id="site-price-${index}">Çekiliyor...</span>
           </div>
+          <div class="price-ts" id="ts-${index}"></div>
         </div>
         <div class="discount-section" id="discount-${index}" style="display: ${secretModeActive ? 'block' : 'none'};">
           <div class="discount-text">Hesaplanıyor...</div>
@@ -348,6 +373,12 @@ function updatePriceAndDiscount(product, index) {
   const listTLSpan = document.getElementById(`list-tl-${index}`);
   const sitePriceSpan = document.getElementById(`site-price-${index}`);
   const discountDiv = document.getElementById(`discount-${index}`);
+  const tsDiv = document.getElementById(`ts-${index}`);
+  if (tsDiv && product.priceTs) {
+    const onlyDate = product.priceTs === PRICES_UPDATED_AT;
+    tsDiv.textContent = "Site fiyatı: " + new Date(product.priceTs).toLocaleString("tr-TR",
+      onlyDate ? { day: "2-digit", month: "2-digit", year: "numeric" } : { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+  }
 
   // KDV DAHİL liste fiyatı (TL) = Euro * Kur * 1.20
   const listPriceWithVAT_TL = product.euroPrice * currentEuroRate * KDV_ORANI;
@@ -370,6 +401,12 @@ function updatePriceAndDiscount(product, index) {
     discountDiv.innerHTML = `<div class="discount-text" style="color: #555;">Bu ürün şu anda stoklarda bulunmamaktadır.</div>`;
   }
 }
+
+// Site fiyatlarının dosyaya en son işlendiği tarih (kartlarda gösterilir)
+const PRICES_UPDATED_AT = new Date("2026-11-18T00:00:00").getTime();
+Object.values(categories).forEach(cat => cat.products.forEach(p => {
+  if (p.productUrl) p.priceTs = PRICES_UPDATED_AT;
+}));
 
 // Başlat
 fetchTCMBEuroRate();
